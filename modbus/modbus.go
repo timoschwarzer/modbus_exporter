@@ -176,19 +176,19 @@ func scrapeMetrics(definitions []config.MetricDef, c modbus.Client) ([]metric, e
 		var f modbusFunc
 
 		switch definition.Address / 10000 {
-		case 1:
+		case 0:
 			f = c.ReadCoils
-		case 2:
+		case 1:
 			f = c.ReadDiscreteInputs
 		case 3:
-			f = c.ReadHoldingRegisters
-		case 4:
 			f = c.ReadInputRegisters
+		case 4:
+			f = c.ReadHoldingRegisters
 		default:
 			return []metric{}, fmt.Errorf(
-				"metric: '%v', address '%v': metric address should be within the range of 10000 - 40000."+
-					"'1xxxx' for read coil / digital output, '2xxxx' for read discrete inputs / digital input,"+
-					"'3xxxx' read holding registers / analog output, '4xxxx' read input registers / analog input",
+				"metric: '%v', address '%v': metric address should be within the range of 00000 - 50000."+
+					"'0xxxx' for read coil / digital output, '1xxxx' for read discrete inputs / digital input,"+
+					"'4xxxx' read holding registers / analog output, '3xxxx' read input registers / analog input",
 				definition.Name, definition.Address,
 			)
 		}
