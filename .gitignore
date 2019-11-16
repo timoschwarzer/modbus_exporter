@@ -3,6 +3,7 @@
 *.dll
 *.so
 *.dylib
+.idea
 
 # Test binary, build with `go test -c`
 *.test
@@ -18,3 +19,4 @@ modbus_exporter
 
 # Prometheus data directory
 data/
+build/

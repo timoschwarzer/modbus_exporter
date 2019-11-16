@@ -87,6 +87,7 @@ func (t *ModbusDataType) validate() error {
 		ModbusFloat32,
 		ModbusInt16,
 		ModbusInt32,
+		ModbusInt32Swap,
 		ModbusUInt16,
 		ModbusBool,
 	}
@@ -105,12 +106,13 @@ func (t *ModbusDataType) validate() error {
 }
 
 const (
-	ModbusFloat16 ModbusDataType = "float16"
-	ModbusFloat32 ModbusDataType = "float32"
-	ModbusInt16   ModbusDataType = "int16"
-	ModbusInt32   ModbusDataType = "int32"
-	ModbusUInt16  ModbusDataType = "uint16"
-	ModbusBool    ModbusDataType = "bool"
+	ModbusFloat16   ModbusDataType = "float16"
+	ModbusFloat32   ModbusDataType = "float32"
+	ModbusInt16     ModbusDataType = "int16"
+	ModbusInt32     ModbusDataType = "int32"
+	ModbusInt32Swap ModbusDataType = "int32swap"
+	ModbusUInt16    ModbusDataType = "uint16"
+	ModbusBool      ModbusDataType = "bool"
 )
 
 // MetricType specifies the Prometheus metric type, see
