@@ -273,7 +273,7 @@ func parseModbusData(d config.MetricDef, rawData []byte) (float64, error) {
 				return float64(0), &InsufficientRegistersError{fmt.Sprintf("expected at least 2, got %v", len(rawData))}
 			}
 			i := binary.BigEndian.Uint32(rawData)
-			return float64(i), nil
+			return float64(int32(i)), nil
 		}
 	case config.ModbusInt32Swap:
 		{
@@ -281,7 +281,7 @@ func parseModbusData(d config.MetricDef, rawData []byte) (float64, error) {
 				return float64(0), &InsufficientRegistersError{fmt.Sprintf("expected at least 2, got %v", len(rawData))}
 			}
 			i := binary.BigEndian.Uint32([]byte{rawData[2], rawData[3], rawData[0], rawData[1]})
-			return float64(i), nil
+			return float64(int32(i)), nil
 		}
 	case config.ModbusUInt16:
 		{
